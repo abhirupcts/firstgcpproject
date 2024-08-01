@@ -1,0 +1,65 @@
+{
+	"snapshotNumber": "1",
+	"triggerConfigs": [
+		{
+			"label": "Schedule Trigger",
+			"triggerType": "CRON",
+			"triggerNumber": "1",
+			"triggerId": "cron_trigger/FirstIntegration_Timer_1/31+1+*+*+*",
+			"startTasks": [
+				{
+					"taskId": "1"
+				}
+			],
+			"properties": {
+				"Scheduled Time spec": "31 1 * * *",
+				"Timer Name": "FirstIntegration_Timer_1"
+			}
+		}
+	],
+	"taskConfigs": [
+		{
+			"task": "FieldMappingTask",
+			"taskId": "1",
+			"parameters": {
+				"FieldMappingConfigTaskParameterKey": {
+					"key": "FieldMappingConfigTaskParameterKey",
+					"value": {
+						"jsonValue": "{\n  \"@type\": \"type.googleapis.com/enterprise.crm.eventbus.proto.FieldMappingConfig\",\n  \"mappedFields\": [{\n    \"inputField\": {\n      \"fieldType\": \"STRING_VALUE\",\n      \"transformExpression\": {\n        \"initialValue\": {\n          \"baseFunction\": {\n            \"functionType\": {\n              \"baseFunction\": {\n                \"functionName\": \"GET_UUID\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"outputField\": {\n      \"referenceKey\": \"$Value$\",\n      \"fieldType\": \"STRING_VALUE\",\n      \"cardinality\": \"OPTIONAL\"\n    }\n  }]\n}"
+					}
+				}
+			},
+			"displayName": "Data Mapping",
+			"taskExecutionStrategy": "WHEN_ALL_SUCCEED",
+			"externalTaskType": "NORMAL_TASK"
+		}
+	],
+	"integrationParameters": [
+		{
+			"key": "Region",
+			"dataType": "STRING_VALUE",
+			"defaultValue": {
+				"stringValue": "us/europe"
+			}
+		},
+		{
+			"key": "ProjectId",
+			"dataType": "STRING_VALUE",
+			"defaultValue": {
+				"stringValue": "Test"
+			}
+		},
+		{
+			"key": "Value",
+			"dataType": "STRING_VALUE",
+			"defaultValue": {
+				"stringValue": ""
+			}
+		}
+	],
+	"databasePersistencePolicy": "",
+	"cloudLoggingDetails": {
+		"cloudLoggingSeverity": "",
+		"enableCloudLogging": false
+	}
+}
