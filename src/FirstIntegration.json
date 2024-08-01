@@ -68,7 +68,7 @@
 				"displayName": "`CONFIG__env`"
 			},
 			"value": {
-				"stringValue": "dev"
+				"stringValue": "qa"
 			}
 		}
 	],
