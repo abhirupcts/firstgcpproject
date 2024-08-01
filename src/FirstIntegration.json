@@ -1,5 +1,5 @@
 {
-	"snapshotNumber": "1",
+	"snapshotNumber": "4",
 	"triggerConfigs": [
 		{
 			"label": "Schedule Trigger",
@@ -25,7 +25,7 @@
 				"FieldMappingConfigTaskParameterKey": {
 					"key": "FieldMappingConfigTaskParameterKey",
 					"value": {
-						"jsonValue": "{\n  \"@type\": \"type.googleapis.com/enterprise.crm.eventbus.proto.FieldMappingConfig\",\n  \"mappedFields\": [{\n    \"inputField\": {\n      \"fieldType\": \"STRING_VALUE\",\n      \"transformExpression\": {\n        \"initialValue\": {\n          \"baseFunction\": {\n            \"functionType\": {\n              \"baseFunction\": {\n                \"functionName\": \"GET_UUID\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"outputField\": {\n      \"referenceKey\": \"$Value$\",\n      \"fieldType\": \"STRING_VALUE\",\n      \"cardinality\": \"OPTIONAL\"\n    }\n  }]\n}"
+						"jsonValue": "{\n  \"@type\": \"type.googleapis.com/enterprise.crm.eventbus.proto.FieldMappingConfig\",\n  \"mappedFields\": [{\n    \"inputField\": {\n      \"fieldType\": \"STRING_VALUE\",\n      \"transformExpression\": {\n        \"initialValue\": {\n          \"baseFunction\": {\n            \"functionType\": {\n              \"baseFunction\": {\n                \"functionName\": \"GET_UUID\"\n              }\n            }\n          }\n        },\n        \"transformationFunctions\": [{\n          \"functionType\": {\n            \"stringFunction\": {\n              \"functionName\": \"CONCAT\"\n            }\n          },\n          \"parameters\": [{\n            \"initialValue\": {\n              \"referenceValue\": \"$`CONFIG__env`$\"\n            }\n          }]\n        }]\n      }\n    },\n    \"outputField\": {\n      \"referenceKey\": \"$Value$\",\n      \"fieldType\": \"STRING_VALUE\",\n      \"cardinality\": \"OPTIONAL\"\n    }\n  }]\n}"
 					}
 				}
 			},
@@ -57,9 +57,24 @@
 			}
 		}
 	],
+	"integrationConfigParameters": [
+		{
+			"parameter": {
+				"key": "`CONFIG__env`",
+				"dataType": "STRING_VALUE",
+				"defaultValue": {
+					"stringValue": "dev"
+				},
+				"displayName": "`CONFIG__env`"
+			},
+			"value": {
+				"stringValue": "dev"
+			}
+		}
+	],
 	"databasePersistencePolicy": "",
 	"cloudLoggingDetails": {
-		"cloudLoggingSeverity": "",
+		"cloudLoggingSeverity": "CLOUD_LOGGING_SEVERITY_UNSPECIFIED",
 		"enableCloudLogging": false
 	}
 }
